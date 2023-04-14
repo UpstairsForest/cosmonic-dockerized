@@ -1,15 +1,16 @@
 FROM ubuntu
 
+ENV PATH="/root/.cargo/bin:${PATH}"
+ENV PATH="/root/.cosmo/bin:${PATH}}"
+
 RUN apt-get update -y \
  && apt-get install -y apt-utils \
  build-essential \
  curl \
  git
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cargo install wash-cli
 RUN bash -c "$(curl -fsSL https://cosmonic.sh/install.sh)"
-ENV PATH="/root/.cosmo/bin:${PATH}}"
 
 # fix problem with packaging in 22.04 for wash
 RUN apt-get install wget \
@@ -19,3 +20,5 @@ RUN apt-get install wget \
 
 # fix problem with running cosmo launch
 RUN rustup target add wasm32-unknown-unknown
+
+WORKDIR /CosmonicProjects
