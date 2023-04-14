@@ -1,0 +1,8 @@
+version: 1.0.0
+services:
+  cosmonic:
+    container_name: cosmonic
+    build: .
+    volumes:
+      - .:/CosmonicProjects
+    command: tail -F anything
