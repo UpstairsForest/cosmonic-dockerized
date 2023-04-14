@@ -14,7 +14,11 @@ docker-compose up -d
 ```bash
 docker-compose exec cosmonic bash
 ```
-5. start the cosmonic tutorial
+5. change directory to the volume
+```bash
+cd /CosmonicProjects
+```
+6. start the cosmonic tutorial
 ```bash
 cosmo tutorial hello
 ```
